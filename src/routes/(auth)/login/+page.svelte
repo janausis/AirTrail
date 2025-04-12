@@ -158,7 +158,7 @@
             Log in
           </Form.Button>
         </form>
-        {#else}
+        {:else}
         <div class="grid gap-2 text-center">
           <h1 class="text-3xl font-bold">Login</h1>
           <p class="text-muted-foreground text-balance">
