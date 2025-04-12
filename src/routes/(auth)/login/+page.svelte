@@ -119,12 +119,14 @@
   <div class="h-full grid lg:grid-cols-2">
     <div class="flex items-center justify-center">
       <div class="mx-auto grid w-[350px] gap-6">
+        {#if !appConfig.oauth.enabled}
         <div class="grid gap-2 text-center">
           <h1 class="text-3xl font-bold">Login</h1>
           <p class="text-muted-foreground text-balance">
             Welcome back! Enter your username and password to login
           </p>
         </div>
+
         <form
           use:enhance
           action="/api/users/login"
@@ -156,7 +158,15 @@
             Log in
           </Form.Button>
         </form>
-        {#if appConfig.oauth.enabled}
+        {#else}
+        <div class="grid gap-2 text-center">
+          <h1 class="text-3xl font-bold">Login</h1>
+          <p class="text-muted-foreground text-balance">
+            Welcome back! Please login using your SSO Provider
+          </p>
+        </div>
+
+
           <Button
             onclick={oauthLogin}
             disabled={oauthLoading}
